@@ -75,14 +75,14 @@ ggarrange(alpha_fig_Obs, alpha_fig_Shannon, alpha_fig_Pielou, alpha_fig_Dominanc
 dev.off()
 
 #### Correlations
-with(alpha_byLake, cor.test(microbiota_normalized_observed_richness, inverts_combined_observed_richness, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_ace_estimate, inverts_combined_ace_estimate, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_chao1_estimate, inverts_combined_chao1_estimate, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_shannon_diversity_estimate, inverts_combined_shannon_diversity_estimate, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_simpson_diversity_estimate, inverts_combined_simpson_diversity_estimate, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_pielou, inverts_combined_pielou, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_simpson_evenness, inverts_combined_simpson_evenness, method = "pearson"))
-with(alpha_byLake, cor.test(microbiota_normalized_dominance, inverts_combined_dominance, method = "pearson"))
+with(alpha_byLake, cor.test(microbiota_normalized_observed_richness, inverts_combined_observed_richness, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_ace_estimate, inverts_combined_ace_estimate, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_chao1_estimate, inverts_combined_chao1_estimate, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_shannon_diversity_estimate, inverts_combined_shannon_diversity_estimate, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_simpson_diversity_estimate, inverts_combined_simpson_diversity_estimate, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_pielou, inverts_combined_pielou, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_simpson_evenness, inverts_combined_simpson_evenness, method = "spearman"))
+with(alpha_byLake, cor.test(microbiota_normalized_dominance, inverts_combined_dominance, method = "spearman"))
 
 #############################################################
 ##### -- Environmental correlates of alpha diversity -- #####
@@ -163,8 +163,8 @@ write.csv(data.frame(taxon = rep(c("Microbes", "Macro-invertebrates"), each = 4)
 ############################################
 #### Check correlation between macrobiota and microbiota
 ### Mantel test uses dissimilarity matrices
-binary_diss_cor <- mantel(micro_byLake_horn_binary, inverts_combined_byLake_horn_binary, permutations = 9999, method = "pearson")
-abun_diss_cor <- mantel(micro_byLake_horn, inverts_combined_byLake_horn, permutations = 9999, method = "pearson")
+binary_diss_cor <- mantel(micro_byLake_horn_binary, inverts_combined_byLake_horn_binary, permutations = 9999, method = "spearman")
+abun_diss_cor <- mantel(micro_byLake_horn, inverts_combined_byLake_horn, permutations = 9999, method = "spearman")
 
 ##### -- Figure 4: Beta diversity of macro-invertebrates vs microbes -- #####
 ##### Binary dissimilarity
